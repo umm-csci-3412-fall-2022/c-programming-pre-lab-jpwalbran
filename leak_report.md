@@ -113,4 +113,5 @@ char const *strip(char const *str) {
 ```
 
 If we look at the above, we notice that there is a pointer variable, `*result` that is never freed. So we would want to start by
-attempting to free the variable `*result` before the return.
+attempting to free the variable `*result` before the return. Adding the line `free(result)` right before the return, however,
+does not work, instead generating the following output:
