@@ -15,8 +15,10 @@ int main() {
     "     silliness    "
   };
 
-  for (int i = 0; i < NUM_STRINGS; ++i) {
-    if (is_clean(strings[i])) {
+  for (int i = 0; i < NUM_STRINGS; i++) {
+    printf(strings[i]);
+    int isClean = is_clean(strings[i]);
+    if (isClean) {
       printf("The string '%s' is clean.\n", strings[i]);
     } else {
       printf("The string '%s' is NOT clean.\n", strings[i]);

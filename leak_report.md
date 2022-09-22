@@ -115,7 +115,6 @@ char const *strip(char const *str) {
 If we look at the above, we notice that there is a pointer variable, `*result` that is never freed. So we would want to start by
 attempting to free the variable `*result` before the return.
 
-
 Therefore, we should try to add `free(result)` the the function one line above the return statement.
  > As a note, this doesn't actually change the memory address, so in this case,
  > we're able to free the memory, and then we read the value of the pointer.
@@ -127,3 +126,5 @@ Therefore, we should try to add `free(result)` the the function one line above t
  Instead, it was doable to free the memory in the `is_clean()' method. There, we wanted to free the memory referenced by the 'cleaned' pointer. In order to do this, we needed to cast it to a void pointer.
  This, however, also didn't quite work, because the `strip()` method doesn't always allocate memory, (If the string is all spaces,
  then the method just returns). Therefore, we need to add a check that the string to return wasn't empty. (This meant checking that the length of `cleaned` was greater than 0). After doing this, the valgrind and other checks were all happy.
+attempting to free the variable `*result` before the return. Adding the line `free(result)` right before the return, however,
+does not work, instead generating the following output:
